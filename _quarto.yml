@@ -1,0 +1,28 @@
+project:
+  type: website
+  
+resources:
+  - CNAME
+
+website:
+  title: "Alex Knorre"
+  navbar: false
+  favicon: files/favicon.ico
+  description: "Personal webpage of Alex Knorre"
+  page-footer: "Quarto Website made with RStudio | [Source](https://github.com/alexeyknorre/alexeyknorre.github.io)"
+  site-url: https://alexknorre.com
+  google-analytics: "G-3823D0ESWP"
+
+format:
+  html:
+    respect-user-color-scheme: true
+    fontsize: 1.1em
+    #css: styles.css
+    toc: false
+    
+theme:
+  dark: darkly
+  light: flatly
+    
+editor: source
+
