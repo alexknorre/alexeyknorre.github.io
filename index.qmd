@@ -1,19 +1,22 @@
 ---
 title: "Alex Knorre"
+lightbox: false
 page-layout: article
 
 ---
 
 ```{=html}
 <div>
-<img src="files/knorre_headshot.jpg" style="float:left;margin:0px 20px 0px 0px;    max-height:250px;
-    max-width:250px;
+<img src="files/knorre_headshot.jpg" style="float:left;margin:0px 20px 0px 0px;    max-height:40%;
+    max-width:40%;
     height:auto;
     width:auto;">
 </div>
 ```
 
-I am [an Assistant Professor in the Department of Criminology](https://www.usf.edu/cbcs/criminology/faculty-staff/a-knorre.aspx) at the University of South Florida. I received my Ph.D. in Criminology (2023) and A.M. in Statistics (2022) from [the University of Pennsylvania](https://crim.sas.upenn.edu), and then worked as a Postdoctoral Research Fellow at [Boston College](https://www.bc.edu/content/bc-web/schools/morrissey/departments/computer-science.html). Before joining Ph.D. program, I studied Russian criminal justice as a researcher with the Institute for the Rule of Law, European University in St Petersburg. My work focuses on victimization, gun violence, illegal drugs, and policy evaluation. I have recently published in Justice Quarterly, Journal of Criminal Justice, Aggression & Violent Behavior, and Criminology & Public Policy. I currently serve an a Managing Editor for [Journal of Quantitative Criminology](https://link.springer.com/journal/10940).
+I am an Assistant Professor in the Department of Criminology at [the University of South Florida](https://www.usf.edu/cbcs/criminology/faculty-staff/a-knorre.aspx). I received my Ph.D. in Criminology (2023) and A.M. in Statistics (2022) from [the University of Pennsylvania](https://crim.sas.upenn.edu), and then worked as a Postdoctoral Research Fellow at [Boston College](https://www.bc.edu/content/bc-web/schools/morrissey/departments/computer-science.html). Before joining Ph.D. program, I studied Russian criminal justice as a researcher with the Institute for the Rule of Law, European University in St Petersburg. 
+
+My work focuses on victimization, gun violence, illegal drugs, and policy evaluation. I have recently published in Justice Quarterly, Journal of Criminal Justice, Aggression & Violent Behavior, and Criminology & Public Policy. I currently serve as a Managing Editor for [Journal of Quantitative Criminology](https://link.springer.com/journal/10940).
 
 
 My CV is available here: [PDF, 120Kb](./files/Knorre_CV_Aug2025.pdf)
