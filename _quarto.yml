@@ -17,7 +17,7 @@ website:
 
 format:
   html:
-    respect-user-color-scheme: true
+    respect-user-color-scheme: false
     fontsize: 1.1em
     #css: styles.css
     toc: false
