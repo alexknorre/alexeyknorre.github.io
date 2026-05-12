@@ -7,15 +7,15 @@ page-layout: article
 ---
 
 ```{=html}
-<div>
-<img src="files/knorre_headshot.jpg" style="float:left;margin:0px 20px 0px 0px;    max-height:40%;
-    max-width:40%;
-    height:auto;
-    width:auto;">
-</div>
+<img src="files/knorre_headshot.jpg"
+     alt="Alex Knorre"
+     style="float: left;
+            width: min(280px, 35%);
+            margin: .25em 1.5em 0.25em 0em;
+            border-radius: 10px;">
 ```
 
-I study how we know what we think we know about crime and violence. I work on measurement problems in criminology, especially where official data is missing, manipulated, or systematically biased: crime victims, illegal markets, settings with politicized administrative data. My work combines new measurement methods, descriptive evidence on hard-to-measure populations and behaviors, and causal evaluation of the natural experiments or policies that target them. Building reproducible research infrastructure is a core part of how I work, and I release the underlying data and code when possible so other researchers can build on it.
+I study how we know what we think we know about crime and violence. I work on measurement problems in criminology, especially where official data is missing, manipulated, or systematically biased: crime victims, illegal markets, and criminal justice in settings with politicized administrative data. My work combines new measurement methods, descriptive evidence on hard-to-measure populations and behaviors, and causal evaluation of the natural experiments or policies that affect them. Building reproducible research infrastructure is a core part of how I work, and I release the underlying data and code when possible so other researchers can build on it.
 
 I am an Assistant Professor in the Department of Criminology at [the University of South Florida](https://www.usf.edu/cbcs/criminology/faculty-staff/a-knorre.aspx). I received my Ph.D. in Criminology and A.M. in Statistics from [the University of Pennsylvania](https://crim.sas.upenn.edu), and worked as a Postdoctoral Research Fellow in Computer Science at [Boston College](https://www.bc.edu/content/bc-web/schools/morrissey/departments/computer-science.html). Before joining Ph.D. program, I studied Russian criminal justice as a researcher with the Institute for the Rule of Law, [European University at St. Petersburg](https://eusp.org/en). Recent work appears in *PLoS One*, *Justice Quarterly*, *Journal of Criminal Justice*, *Aggression & Violent Behavior*, and *Criminology & Public Policy*.
 
