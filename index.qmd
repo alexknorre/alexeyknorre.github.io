@@ -21,7 +21,7 @@ I am an Assistant Professor in the Department of Criminology at [the University 
 
 My CV is available here: [PDF, 120Kb](./files/Knorre_CV_Feb2026.pdf)
 
-My profiles: [LinkedIn](https://www.linkedin.com/in/alexeyknorre/), [Github](https://github.com/alexeyknorre), [Google Scholar](https://scholar.google.com/citations?user=mR-1XBIAAAAJ&hl=en).
+My profiles: [LinkedIn](https://www.linkedin.com/in/alexeyknorre/), [Github](https://github.com/alexknorre), [Google Scholar](https://scholar.google.com/citations?user=mR-1XBIAAAAJ&hl=en).
 
 ## Papers
 
@@ -185,11 +185,11 @@ for (key in names(paper_meta)) {
 
 I prepared and maintain the following datasets:
 
-Replication package for ``Unequal by the gun: Four Decades of Black-White Firearm Homicide Gap'' (2026) on [Github](https://github.com/alexeyknorre/racial_gap_gun_homicides)
+Replication package for ``Unequal by the gun: Four Decades of Black-White Firearm Homicide Gap'' (2026) on [Github](https://github.com/alexknorre/racial_gap_gun_homicides)
 
 Replication package for ''Measuring Changes in Bias-Motivated Attacks: Evidence from Anti-Asian Violence During the COVID-19 Pandemic'' (2025) on [OSF](https://osf.io/skv69/)
 
-Replication package for ''Comparing risks of firearm-related death and injury among young adult males in US cities to wartime service in Iraq and Afghanistan'' (2022) on [Github](https://github.com/alexeyknorre/safer_at_war)
+Replication package for ''Comparing risks of firearm-related death and injury among young adult males in US cities to wartime service in Iraq and Afghanistan'' (2022) on [Github](https://github.com/alexknorre/safer_at_war)
 
 Russian Crime Victimization Survey, Wave I (2018) on [Dataverse](https://doi.org/10.7910/DVN/C2OTH9), Wave II (2021) on [Dataverse](https://doi.org/10.7910/DVN/SGRQTI)
 

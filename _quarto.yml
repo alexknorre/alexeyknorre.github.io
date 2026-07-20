@@ -11,7 +11,7 @@ website:
   navbar: false
   favicon: files/favicon.ico
   description: "Personal webpage of Alex Knorre"
-  page-footer: "Quarto Website made with RStudio | [Source](https://github.com/alexeyknorre/alexeyknorre.github.io)"
+  page-footer: "Quarto Website made with RStudio | [Source](https://github.com/alexknorre/alexeyknorre.github.io)"
   site-url: https://alexknorre.com
   google-analytics: "G-3823D0ESWP"
 
