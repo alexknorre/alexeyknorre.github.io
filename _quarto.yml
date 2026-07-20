@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - papers/*.pdf
+    - 404.html
   
 resources:
   - CNAME

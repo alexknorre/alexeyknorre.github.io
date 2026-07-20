@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>404 — The Dark Figure | Alex Knorre</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --cyan: #4deeea;
+    --amber: #ffd23f;
+    --magenta: #f652a0;
+    --dim: #8892b0;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: #dbe4ff;
+    font-family: "Menlo", "Consolas", "Courier New", monospace;
+    min-height: 100vh;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 1rem 4rem 1rem;
+    text-align: center;
+  }
+  .scene {
+    position: relative;
+    display: inline-block;
+    width: min(768px, 92vw);
+    line-height: 0;
+    border: 4px solid #1c2440;
+    box-shadow: 0 0 40px rgba(77, 238, 234, 0.12);
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  /* CRT scanlines + vignette */
+  .scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(to bottom,
+        rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+        rgba(0,0,0,0.18) 3px),
+      radial-gradient(ellipse at center,
+        rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
+  }
+  h1 {
+    color: var(--cyan);
+    font-size: 1.25rem;
+    letter-spacing: 0.35em;
+    margin: 2rem 0 0.5rem 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(77, 238, 234, 0.5);
+  }
+  .blink { animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  p.lore {
+    color: var(--dim);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    max-width: 34rem;
+    margin: 1rem auto;
+  }
+  p.lore em { color: var(--amber); font-style: normal; }
+  a.home {
+    display: inline-block;
+    margin-top: 1.4rem;
+    padding: 0.7rem 1.4rem;
+    color: var(--bg);
+    background: var(--cyan);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 var(--magenta);
+  }
+  a.home:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--magenta); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="scene"><canvas id="px" width="256" height="144"></canvas></div>
+  <h1>The Dark Figure<span class="blink">_</span></h1>
+  <p class="lore">
+    Criminologists call it <em>the dark figure</em>: events that happened
+    but never made it into the official record. This page is one of them.
+    It may exist somewhere in reality. It is not in the data.
+  </p>
+  <a class="home" href="/">Return to the evidence</a>
+</div>
+<script>
+(function () {
+  var cv = document.getElementById("px"), cx = cv.getContext("2d");
+  var W = 256, H = 144;
+
+  // deterministic PRNG so the city never changes between visits
+  var seed = 20260720;
+  function rnd() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+
+  function px(x, y, c) { cx.fillStyle = c; cx.fillRect(x | 0, y | 0, 1, 1); }
+  function rect(x, y, w, h, c) { cx.fillStyle = c; cx.fillRect(x | 0, y | 0, w, h); }
+
+  // --- sky: banded night gradient ---
+  var bands = ["#05070f", "#070b18", "#0a1022", "#0d152c", "#101a36", "#131f40"];
+  for (var y = 0; y < H; y++) rect(0, y, W, 1, bands[Math.min(bands.length - 1, (y / (H / bands.length)) | 0)]);
+
+  // --- stars ---
+  var stars = [];
+  for (var i = 0; i < 90; i++) {
+    var sx = (rnd() * W) | 0, sy = (rnd() * 90) | 0;
+    stars.push([sx, sy, rnd()]);
+  }
+
+  // --- pixel "404" glyphs (5x7 font), drawn big in the sky ---
+  var glyphs = {
+    "4": ["1001","1001","1001","1111","0001","0001","0001"],
+    "0": ["0110","1001","1001","1001","1001","1001","0110"]
+  };
+  function drawGlyph(g, ox, oy, s, c, glow) {
+    var rows = glyphs[g];
+    for (var r = 0; r < rows.length; r++)
+      for (var q = 0; q < rows[r].length; q++)
+        if (rows[r][q] === "1") {
+          if (glow) rect(ox + q * s - 1, oy + r * s - 1, s + 2, s + 2, glow);
+          rect(ox + q * s, oy + r * s, s, s, c);
+        }
+  }
+  function draw404() {
+    var s = 6, gw = 4 * s + s; // glyph width + gap
+    var total = 3 * gw - s, ox = ((W - total) / 2) | 0, oy = 18;
+    drawGlyph("4", ox, oy, s, "#4deeea", "rgba(77,238,234,0.25)");
+    drawGlyph("0", ox + gw, oy, s, "#f652a0", "rgba(246,82,160,0.25)");
+    drawGlyph("4", ox + 2 * gw, oy, s, "#4deeea", "rgba(77,238,234,0.25)");
+  }
+
+  // --- city skyline: two layers ---
+  var backline = [], frontline = [];
+  function buildSkyline(baseY, minH, maxH, minW, maxW) {
+    var line = [], x = 0;
+    while (x < W) {
+      var bw = minW + ((rnd() * (maxW - minW)) | 0);
+      var bh = minH + ((rnd() * (maxH - minH)) | 0);
+      line.push([x, baseY - bh, bw, bh]);
+      x += bw;
+    }
+    return line;
+  }
+  backline = buildSkyline(H, 30, 62, 10, 22);
+  frontline = buildSkyline(H, 12, 42, 14, 30);
+
+  var windows = []; // [x, y, phase]
+  frontline.forEach(function (b) {
+    for (var wx = b[0] + 2; wx < b[0] + b[2] - 2; wx += 3)
+      for (var wy = b[1] + 3; wy < H - 4; wy += 4)
+        if (rnd() < 0.45) windows.push([wx, wy, rnd()]);
+  });
+
+  // rooftop beacon on the tallest front building
+  var tallest = frontline.reduce(function (a, b) { return b[3] > a[3] ? b : a; });
+  var beaconX = tallest[0] + ((tallest[2] / 2) | 0), beaconY = tallest[1] - 2;
+
+  function drawCity() {
+    backline.forEach(function (b) { rect(b[0], b[1], b[2], b[3], "#141a30"); });
+    frontline.forEach(function (b) {
+      rect(b[0], b[1], b[2], b[3], "#0b0f1e");
+      rect(b[0], b[1], b[2], 1, "#1e2846"); // roof edge
+    });
+  }
+
+  // --- satellite dish scanning the sky (top-left) ---
+  function drawSatellite(t) {
+    var ox = 18, oy = 26;
+    rect(ox + 2, oy + 6, 2, 6, "#31406e");         // mast
+    rect(ox - 2, oy + 12, 10, 2, "#31406e");       // base
+    var tilt = Math.sin(t / 900) > 0;
+    rect(ox, oy + (tilt ? 1 : 0), 6, 4, "#8892b0"); // dish
+    px(ox + (tilt ? 6 : -1), oy + 1, "#ffd23f");    // feed horn
+    // signal pips
+    var k = ((t / 300) | 0) % 4;
+    for (var i = 1; i <= k; i++) px(ox + 8 + i * 3, oy - 2 - i * 2, "rgba(255,210,63," + (1 - i * 0.2) + ")");
+  }
+
+  // --- searchlight sweep from a rooftop ---
+  function drawSearchlight(t) {
+    var sx = 200, sy = frontline[frontline.length - 2][1];
+    var ang = -Math.PI / 2 + Math.sin(t / 2400) * 0.7;
+    for (var L = 0; L < 60; L++) {
+      var bx = sx + Math.cos(ang) * L, by = sy + Math.sin(ang) * L;
+      if (by < 0) break;
+      var wgt = 1 - L / 60;
+      rect(bx - ((L / 18) | 0), by, 1 + ((L / 9) | 0), 1, "rgba(219,228,255," + (0.10 * wgt).toFixed(3) + ")");
+    }
+    px(sx, sy - 1, "#dbe4ff");
+  }
+
+  function frame(t) {
+    // sky
+    for (var y = 0; y < H; y++) rect(0, y, W, 1, bands[Math.min(bands.length - 1, (y / (H / bands.length)) | 0)]);
+    // stars twinkle
+    stars.forEach(function (s) {
+      var on = (Math.sin(t / 700 + s[2] * 20) + 1) / 2;
+      if (on > 0.25) px(s[0], s[1], on > 0.75 ? "#dbe4ff" : "#5a668c");
+    });
+    draw404();
+    drawSearchlight(t);
+    drawCity();
+    drawSatellite(t);
+    // windows flicker rarely
+    windows.forEach(function (w) {
+      var on = Math.sin(t / 4000 + w[2] * 40) > -0.85;
+      px(w[0], w[1], on ? "#ffd23f" : "#2a3352");
+      if (on && w[2] > 0.9) px(w[0] + 1, w[1], "#ffd23f");
+    });
+    // police beacon: red/blue alternation
+    var phase = ((t / 450) | 0) % 2;
+    px(beaconX, beaconY, phase ? "#ff3b3b" : "#3b8bff");
+    px(beaconX, beaconY - 1, phase ? "rgba(255,59,59,0.6)" : "rgba(59,139,255,0.6)");
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
