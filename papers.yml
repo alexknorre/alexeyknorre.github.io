@@ -1,0 +1,59 @@
+# Publications shown on the site, in display order (top = first).
+# Each key must match a citation key in knorre_publications.bib,
+# with images/{key}.png and papers/{key}.pdf present.
+# 'replication' is optional. Edit summaries here, never in the bib.
+
+papers:
+- key: knorre_macdonald_2026
+  summary: >-
+    We analyze 45 years of CDC data on gun homicide deaths in the U.S. and find that the racial disparity
+    in firearm homicide between Black and White Americans has grown over time. By 2020, Black males faced
+    over ten times the risk of gun homicide death compared to White males.
+  replication: https://github.com/alexknorre/racial_gap_gun_homicides
+- key: knorre_etal_2025
+  summary: >-
+    We propose a new method to measure changes in bias-motivated violence using crime data. Applying it
+    to the early COVID-19 period, we find that anti-Asian violence by strangers rose significantly compared
+    to other groups.
+  replication: https://osf.io/skv69/
+- key: leverso_etal_2025
+  summary: >-
+    We examine the social positions of gang-affiliated girls and women in online spaces. Our findings
+    reveal that digital platforms do not equalize gender hierarchies within gangs, as women's online roles
+    largely mirror their constrained positions offline.
+- key: macdonald_etal_2024
+  summary: >-
+    We review the evidence on place-based public health approaches to reducing violent crime at hot spots.
+    The review synthesizes findings on environmental interventions and community health strategies as
+    alternatives to traditional policing.
+- key: knorre_etal_2024
+  summary: >-
+    We document trends in criminal justice, crime, and incarceration in Russia during the 2000-2020. We
+    describe the organizational structure of criminal justice in Russia and dominating role of key performance
+    indicators. We also interpret the Russian crime drop, and issues with incarceration and illegal drugs.
+- key: knorre_etal_2024b
+  summary: >-
+    We study the role of stakeholder activism in driving foreign firms to exit Russia following the 2022
+    invasion of Ukraine. We find that public pressure from consumers and advocacy groups significantly
+    influenced corporate withdrawal decisions.
+- key: goonetilleke_etal_2023
+  summary: >-
+    We analyze the operations of Hydra, the world's largest darknet marketplace. Using unique data, we
+    document its structure, scale, and the criminal economy it sustained before its seizure by law enforcement
+    in 2022.
+- key: knorre_macdonald_2023
+  summary: >-
+    We examine the relationship between land use patterns and shootings using data from 6 large American
+    cities. We find that the post 2020 increase in shootings disproportionately happened in already violent
+    areas, and look at the concentration of shootings.
+- key: delpozo_etal_2022
+  summary: >-
+    We compare gun violence risks for young men in high-violence U.S. cities to casualty rates among soldiers
+    deployed to Iraq and Afghanistan. For some young males in Philadelphia and Chicago, the risk of firearm
+    death exceeded that of wartime service.
+  replication: https://github.com/alexknorre/safer_at_war
+- key: knorre_2020
+  summary: >-
+    I test whether Russian police fabricate drug offenses by analyzing the distribution of seized heroin
+    weights. The statistical evidence suggests systematic bunching at legal thresholds, consistent with
+    evidence planting by officers.

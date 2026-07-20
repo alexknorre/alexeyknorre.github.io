@@ -112,73 +112,13 @@ body {
 #| warning: false
 #| message: false
 
-library(RefManageR)
-library(readxl)
-
-BibOptions(check.entries = FALSE)
-bib <- ReadBib("knorre_publications.bib")
-
-# ---- EDIT THIS LIST TO ADD/REMOVE PAPERS ----
-# Each key must match a key in papers.bib
-# img: path to a figure from the paper
-# summary: 2-3 sentence plain language summary
-# pdf: (optional) local path to PDF
-# replication: (optional) link to replication materials
-
-papers_meta_df <- read_excel("papers/!paper_meta.xlsx")
-
-paper_meta <- setNames(lapply(seq_len(nrow(papers_meta_df)), function(i) {
-  list(
-    img = papers_meta_df$img[i],
-    summary = papers_meta_df$summary[i],
-    pdf = papers_meta_df$pdf[i],
-    replication = papers_meta_df$replication[i]
-  )
-}), papers_meta_df$key)
-# ---- END OF EDITABLE LIST ----
-
-for (key in names(paper_meta)) {
-  entry <- bib[key]
-  m <- paper_meta[[key]]
-
-  # Extract fields from bib entry
-  authors <- paste(entry$author, collapse = ", ")
-  title   <- gsub("[{}]", "", entry$title)
-  journal <- entry$journal
-  year    <- entry$year
-  doi     <- entry$doi
-
-  # Build citation line
-  cite <- paste0(authors, " (", year, "). <em>", journal, "</em>.")
-
-  # Build links
-  links <- ""
-  if (!is.null(m$pdf)) {
-    links <- paste0(links, '<a href="', m$pdf, '" target="_blank">PDF</a> ')
-  }
-  if (!is.null(doi) && nchar(doi) > 0) {
-    links <- paste0(links, '<a href="https://doi.org/', doi, '" target="_blank">DOI</a> ')
-  }
-  if (key == "knorre2024stakeholder") {
-    links <- paste0(links, '<a href="http://www.accessecon.com/Pubs/EB/2024/Volume44/EB-24-V44-I1-P6.pdf" target="_blank">DOI</a> ')
-  }
-  if (!is.na(m$replication)) {
-    links <- paste0(links, '<a href="', m$replication, '" target="_blank">Replication package</a> ')
-  }
-
-  # Emit HTML — no indentation to prevent Pandoc treating it as code
-  cat(sprintf(
-'<div class="paper-entry">
-<img src="%s" alt="Figure from %s">
-<div class="paper-info">
-<div class="paper-title">%s</div>
-<div class="paper-cite">%s</div>
-<div class="paper-summary">%s</div>
-<div class="paper-links">%s</div>
-</div>
-</div>
-', m$img, title, title, cite, m$summary, links))
-}
+# Publications pipeline:
+#   Zotero (collection "_knorre_publications") --Better BibTeX auto-export--> knorre_publications.bib
+#   papers.yml holds what the bib cannot: display order, summaries, replication links.
+#   _render_papers.R joins the two and emits the paper cards.
+# To add a paper: add it in Zotero, pin its citation key, add a papers.yml entry,
+# drop images/{key}.png and papers/{key}.pdf, then quarto render.
+source("_render_papers.R")
 ```
 
 ## Data
